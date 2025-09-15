@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
+import { ThemeToggle } from '@/components/ThemeToggle';
 import AnimatedBackground from '@/components/AnimatedBackground';
 import HeroSection from '@/components/HeroSection';
 import OnboardingWizard from '@/components/OnboardingWizard';
@@ -10,7 +11,7 @@ import CTASection from '@/components/CTASection';
 
 const Index = () => {
   return (
-    <div className="relative min-h-screen bg-background text-foreground overflow-x-hidden">
+    <div className="relative min-h-screen bg-background text-foreground overflow-x-hidden theme-transition">
       {/* Animated background */}
       <AnimatedBackground />
       
@@ -30,6 +31,7 @@ const Index = () => {
         </div>
         
         <div className="flex items-center gap-4">
+          <ThemeToggle />
           <Link to="/auth">
             <Button variant="outline" className="bg-glass border-glass-border">
               Sign In

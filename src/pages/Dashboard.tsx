@@ -1,8 +1,21 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { TrendingUp, Users, Target, Zap } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { TrendingUp, Users, Target, Zap, Filter } from 'lucide-react';
+import { SimpleChart } from '@/components/dashboard/SimpleChart';
+import { FilterSidebar, FilterState } from '@/components/dashboard/FilterSidebar';
 
 const Dashboard: React.FC = () => {
+  const [showFilters, setShowFilters] = useState(false);
+  const [filters, setFilters] = useState<FilterState>({
+    intentScore: [],
+    industries: [],
+    companySizes: [],
+    locations: [],
+    dateRange: 'This Month',
+    technologies: []
+  });
+
   const stats = [
     { title: 'Total Leads', value: '1,247', change: '+12%', icon: Target, trend: 'up' },
     { title: 'High Intent', value: '324', change: '+8%', icon: TrendingUp, trend: 'up' },
@@ -11,19 +24,41 @@ const Dashboard: React.FC = () => {
   ];
 
   return (
-    <div className="space-y-8">
+    <div className="space-y-8 relative">
+      {/* Filter Sidebar */}
+      <FilterSidebar
+        isOpen={showFilters}
+        onToggle={() => setShowFilters(!showFilters)}
+        filters={filters}
+        onFiltersChange={setFilters}
+      />
+
       {/* Header */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        className="space-y-2"
+        className="flex justify-between items-start"
       >
-        <h1 className="text-4xl font-bold bg-gradient-hero bg-clip-text text-transparent">
-          Dashboard
-        </h1>
-        <p className="text-text-secondary text-lg">
-          Welcome back! Here's your lead discovery overview.
-        </p>
+        <div className="space-y-2">
+          <h1 className="text-4xl font-bold bg-gradient-hero bg-clip-text text-transparent">
+            Dashboard
+          </h1>
+          <p className="text-text-secondary text-lg">
+            Welcome back! Here's your lead discovery overview.
+          </p>
+        </div>
+
+        <Button
+          onClick={() => setShowFilters(!showFilters)}
+          variant="outline"
+          className="bg-glass border-glass-border"
+        >
+          <Filter className="w-4 h-4 mr-2" />
+          Filters
+          {Object.values(filters).some(f => Array.isArray(f) ? f.length > 0 : f !== 'All Time') && (
+            <span className="ml-2 w-2 h-2 bg-primary rounded-full"></span>
+          )}
+        </Button>
       </motion.div>
 
       {/* Stats Grid */}
@@ -53,6 +88,30 @@ const Dashboard: React.FC = () => {
             </div>
           </motion.div>
         ))}
+      </div>
+
+      {/* Analytics Charts */}
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <SimpleChart
+          type="area"
+          title="Lead Discovery Trends"
+          description="Monthly lead generation and high-intent prospect tracking"
+        />
+        <SimpleChart
+          type="pie"
+          title="Industry Distribution"
+          description="Breakdown of leads by industry vertical"
+        />
+        <SimpleChart
+          type="bar"
+          title="Conversion Funnel"
+          description="Lead progression through each stage of your sales process"
+        />
+        <SimpleChart
+          type="line"
+          title="Contact Success Rate"
+          description="Outreach performance and response rates over time"
+        />
       </div>
 
       {/* Quick Actions */}

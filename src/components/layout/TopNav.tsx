@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { SidebarTrigger } from "@/components/ui/sidebar";
 import { Bell, Search, User } from 'lucide-react';
+import { ThemeToggle } from '@/components/ThemeToggle';
 
 export function TopNav() {
   return (
@@ -26,6 +27,9 @@ export function TopNav() {
       </div>
 
       <div className="flex items-center gap-3">
+        {/* Theme Toggle */}
+        <ThemeToggle />
+
         {/* Notifications */}
         <Button variant="outline" size="sm" className="bg-glass border-glass-border relative">
           <Bell className="w-4 h-4" />
