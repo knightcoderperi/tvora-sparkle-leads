@@ -5,7 +5,7 @@ import { MotionWrapper } from "@/components/ui/motion-wrapper";
 import { Badge } from "@/components/ui/badge";
 import { ArrowRight, BarChart3, Users, Zap, Shield, Globe, Sparkles, Play, CheckCircle2, TrendingUp } from "lucide-react";
 import { Link } from 'react-router-dom';
-import { ThemeToggle } from '@/components/ThemeToggle';
+// ThemeToggle removed - light mode only design
 
 const Index = () => {
   const shouldReduceMotion = useReducedMotion();
@@ -87,7 +87,6 @@ const Index = () => {
               <a href="#features" className="text-text-secondary hover:text-foreground transition-colors duration-200 hover-lift">Platform</a>
               <a href="#how-it-works" className="text-text-secondary hover:text-foreground transition-colors duration-200 hover-lift">Solutions</a>
               <a href="#pricing" className="text-text-secondary hover:text-foreground transition-colors duration-200 hover-lift">Pricing</a>
-              <ThemeToggle />
               <Link to="/auth">
                 <Button variant="ghost" size="sm" className="hover-lift">Log in</Button>
               </Link>
@@ -107,32 +106,40 @@ const Index = () => {
             <div>
               <MotionWrapper animation="slide-up" delay={0.1}>
                 <Badge variant="secondary" className="mb-6 glass text-sm font-medium px-4 py-2">
-                  <TrendingUp className="w-4 h-4 mr-2" />
-                  Meet your AI outbound engine
+                  <Sparkles className="w-4 h-4 mr-2" />
+                  AI-Powered Outbound Sales Platform
                 </Badge>
               </MotionWrapper>
               
               <MotionWrapper animation="slide-up" delay={0.2}>
-                <h1 className="text-5xl lg:text-7xl font-bold text-foreground mb-6 leading-[1.1]">
+                <h1 className="text-6xl lg:text-8xl font-bold text-foreground mb-6 leading-[1.05]">
                   Meet your AI 
-                  <span className="block text-gradient-apollo">outbound engine</span>
+                  <span className="block bg-gradient-primary bg-clip-text text-transparent">Outbound Engine</span>
                 </h1>
               </MotionWrapper>
               
               <MotionWrapper animation="slide-up" delay={0.3}>
                 <p className="text-xl text-text-secondary mb-8 leading-relaxed max-w-lg">
                   Find and research leads, personalize messaging, and launch campaigns 
-                  in minutes — not hours. All in Apollo.
+                  in minutes — not hours. Transform your outbound sales with AI.
                 </p>
               </MotionWrapper>
 
               <MotionWrapper animation="slide-up" delay={0.4}>
                 <div className="flex flex-col sm:flex-row gap-4 mb-8">
-                  <Button variant="apollo" size="lg" className="font-semibold">
-                    Sign up for free
-                  </Button>
-                  <Button variant="ghost" size="lg" className="group">
-                    <Play className="w-4 h-4 mr-2 group-hover:scale-110 transition-transform" />
+                  <Link to="/auth">
+                    <Button variant="apollo" size="lg" className="font-semibold text-lg px-8 py-4">
+                      Signup for Free
+                      <ArrowRight className="w-5 h-5 ml-2" />
+                    </Button>
+                  </Link>
+                  <Button 
+                    variant="ghost" 
+                    size="lg" 
+                    className="group text-lg px-8 py-4"
+                    onClick={() => window.open('https://youtu.be/4l97aNza_Zc?si=532Tz6hMN6GalmLL', '_blank')}
+                  >
+                    <Play className="w-5 h-5 mr-2 group-hover:scale-110 transition-transform" />
                     Watch Demo
                   </Button>
                 </div>
