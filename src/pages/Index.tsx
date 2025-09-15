@@ -1,6 +1,8 @@
 import React from 'react';
 import AnimatedBackground from '@/components/AnimatedBackground';
 import HeroSection from '@/components/HeroSection';
+import OnboardingWizard from '@/components/OnboardingWizard';
+import LeadDashboard from '@/components/LeadDashboard';
 import FeaturesSection from '@/components/FeaturesSection';
 import CTASection from '@/components/CTASection';
 
@@ -13,6 +15,8 @@ const Index = () => {
       {/* Main content */}
       <main className="relative z-10">
         <HeroSection />
+        <OnboardingWizard />
+        <LeadDashboard />
         <FeaturesSection />
         <CTASection />
       </main>
