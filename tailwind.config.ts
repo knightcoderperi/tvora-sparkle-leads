@@ -212,13 +212,13 @@ const config: Config = {
       const newUtilities = {
         // Interactive hover effects
         ".hover-lift": {
-          "@apply transition-all duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] hover:-translate-y-1 hover:shadow-medium": {},
+          "@apply transition-all duration-300 ease-premium hover:-translate-y-1 hover:shadow-medium": {},
         },
         ".hover-scale": {
-          "@apply transition-transform duration-200 ease-[cubic-bezier(0.4,0,0.2,1)] hover:scale-105": {},
+          "@apply transition-transform duration-200 ease-premium hover:scale-105": {},
         },
         ".hover-glow": {
-          "@apply transition-all duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] hover:shadow-glow": {},
+          "@apply transition-all duration-300 ease-premium hover:shadow-glow": {},
         },
         
         // Focus effects

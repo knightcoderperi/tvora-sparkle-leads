@@ -36,7 +36,7 @@ const AnimatedCard = React.forwardRef<HTMLDivElement, AnimatedCardProps>(
           transition: { duration: 0.3, ease: [0.4, 0, 0.2, 1] }
         } : undefined}
         className={cn(
-          "p-6 transition-all duration-300 ease-[cubic-bezier(0.4,0,0.2,1)]",
+          "p-6 transition-all duration-300 ease-premium",
           cardVariants[variant],
           hover && "cursor-pointer",
           className
